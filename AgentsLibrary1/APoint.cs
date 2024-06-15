@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AgentsLibrary1
 {
-    public class APoint
+    public class APoint : IUpdatable<APoint>,ICloneable
     {
         [DisplayName("Код"),Category("Point")]
         public long Id { get; set; } =0;
@@ -57,5 +57,47 @@ namespace AgentsLibrary1
             return $"Id={Id}, X={X}, Y={Y}, Vel={Vel}, Angle={Angle}, AngleVel={AngleVel}, Accel={Accel}";
         }
 
+        public void Update()
+        {
+            // throw new NotImplementedException();
+            Angle += AngleVel;
+            Vel += Accel;
+            Y += Vel * Math.Sin(Angle);
+            X += Vel * Math.Cos(Angle);
+            //
+            Accel = 0;
+            AngleVel = 0;
+        }
+        public void Update(double dAngleVel, double dAccel)
+        {
+            // throw new NotImplementedException();
+            AngleVel += dAngleVel;
+            Accel += dAccel;
+            Update();
+        }
+
+        public APoint DeepCopy()
+        {
+            // make a new object and copy all fields
+            return new APoint(this);
+        }
+
+        public void CopyFrom(APoint copyObject)
+        {
+            // throw new NotImplementedException();
+            Id = copyObject.Id;
+            X = copyObject.X;
+            Y = copyObject.Y;
+            Vel = copyObject.Vel;
+            Angle = copyObject.Angle;
+            AngleVel = copyObject.AngleVel;
+            Accel = copyObject.Accel;
+        }
+
+        object ICloneable.Clone()
+        {
+            // make a new object and copy all fields
+            return new APoint(this);
+        }
     }
 }
