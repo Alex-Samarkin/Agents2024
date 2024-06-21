@@ -31,5 +31,14 @@ namespace WinFormsAppTest
             Point.Update();
             propertyGrid1.Refresh();
         }
+
+        // AAgent
+        public AAgent Agent { get; set; } = new AAgent();
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            propertyGrid1.SelectedObject = Agent;
+            propertyGrid1.Refresh();
+        }
     }
 }
