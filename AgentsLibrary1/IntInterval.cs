@@ -48,15 +48,15 @@ namespace AgentsLibrary1
             }
             public TInterval(T value, T min = default, T max = default)
             {
-                Value = value;
                 Min = min;
                 Max = max;
+                _value = value;
             }
             public TInterval(TInterval<T> interval)
             {
-                Value = interval.Value;
                 Min = interval.Min;
                 Max = interval.Max;
+                _value = interval.Value;
             }
             public TInterval<T> Clone()
             {

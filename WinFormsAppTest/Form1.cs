@@ -1,4 +1,5 @@
 using AgentsLibrary1;
+using System.Diagnostics;
 
 namespace WinFormsAppTest
 {
@@ -39,6 +40,31 @@ namespace WinFormsAppTest
         {
             propertyGrid1.SelectedObject = Agent;
             propertyGrid1.Refresh();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // var aa = new List<AAgent>();
+            var N = 1000000;
+            
+            /// measure time from here
+            /// 
+            var sw = new Stopwatch();
+            /// start stopwatch
+            /// 
+            sw.Start();
+
+            // create array of N agents called aa
+            var aa = new AAgent[N];
+
+            for (int i = 0; i < N; i++)
+            {
+                aa[i] = new AAgent();
+            }  
+            /// stop stopwatch
+            /// 
+            sw.Stop();
+            MessageBox.Show(sw.ElapsedMilliseconds.ToString());
         }
     }
 }

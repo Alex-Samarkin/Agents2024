@@ -42,5 +42,14 @@ namespace AgentsLibrary1
         [DisplayName("Медицинский статус"),Category("MedicalData"),Browsable(true)]
         [TypeConverter(typeof(ExpandableObjectConverter))]
         public AMedicalStatus MedicalStatus { get; set; } = new AMedicalStatus();
+
+        /// <summary>
+        /// вирус, которым заражен агент (если заражен) с учетом возможных мутаций
+        /// заражение происходит "стандартным" вирусом, а вирус агента может мутировать
+        /// и иметь отличающиеся параметрыв
+        /// </summary>
+        [DisplayName("Вирус"),Category("Virus"),Browsable(true)]
+        [TypeConverter(typeof(ExpandableObjectConverter))]
+        public AVirus Virus { get; set; } = new AVirus();
     }
 }
