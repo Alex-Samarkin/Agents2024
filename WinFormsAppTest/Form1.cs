@@ -46,7 +46,7 @@ namespace WinFormsAppTest
         {
             // var aa = new List<AAgent>();
             var N = 1000000;
-            
+
             /// measure time from here
             /// 
             var sw = new Stopwatch();
@@ -60,11 +60,20 @@ namespace WinFormsAppTest
             for (int i = 0; i < N; i++)
             {
                 aa[i] = new AAgent();
-            }  
+            }
             /// stop stopwatch
             /// 
             sw.Stop();
             MessageBox.Show(sw.ElapsedMilliseconds.ToString());
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            APointBuilder pb = new APointBuilder();
+            var p = pb.Build();
+            propertyGrid1.SelectedObject = p;
+            propertyGrid1.Refresh();
+            p.Update();
         }
     }
 }
